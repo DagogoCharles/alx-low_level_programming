@@ -1,48 +1,43 @@
-int is_palindrome(char *s);
+#include "main.h"
 
 /**
- * find_strlen - Returns the length of a string
- * @s: The string to be measured
- * Return: The length of a string
+ * substring_match - check if a substring after wildcards match s1
+ * @s1: one string
+ * @s2: one string
+ * @after_wldcd: placeholder for position right after wildcard
+ * Return: 1 if matched, 0 if not;
  */
-int find_strlen(char *s)
+int substring_match(char *s1, char *s2, char *after_wldcd)
 {
-int len = 0;
-if (*(s + len))
-{
-len++;
-len += find_strlen(s + len);
-}
-return (len);
-}
-/**
- * check_palindrome - checks if a string is a palindrome
- * @s: the string to be checked
- * @len: the length of s
- * @index: The index of the string to be checked
- * Return: if the string is a palindrome - 1
- * if the string is not a palindrome - 0
- */
-int check_palindrome(char *s, int len, int index)
-{
-if (s[index] == s[len / 2])
+if (*s1 == '\0' && *s2 == '\0')
 return (1);
-if (s[index] == s[len - index - 1])
-return (check_palindrome(s, len, index + 1));
+if (*s1 == '\0' && *s2 == '*')
+return (substring_match(s1, s2 + 1, s2 + 1));
+if (*s1 == '\0' && *s2 != '\0')
 return (0);
+if (*s2 == '*')
+return (substring_match(s1, s2 + 1, s2 + 1));
+if (*s1 == *s2)
+return (substring_match(s1 + 1, s2 + 1, after_wldcd));
+else
+return (substring_match(s1 + 1, after_wldcd, after_wldcd));
 }
+
 /**
- * is_palindrome - Checks if a string is a palindrome
- * @s: The string to be checked
- * Return: if the string is a palindrome - 1
- * if the string is not a palindrome - 0
+ * wildcmp - compares if string with wildcard matches
+ * @s1: one string
+ * @s2: one string
+ * Return: 1 if matched, 0 if not
  */
-int is_palindrome(char *s)
+int wildcmp(char *s1, char *s2)
 {
-int index = 0;
-int len = find_strlen(s);
-if (!(*s))
+if (*s1 == '\0' && *s2 == '\0')
 return (1);
-return (check_palindrome(s, len, index));
+if (*s1 == *s2)
+return (wildcmp(s1 + 1, s2 + 1));
+else if (*s2 == '*')
+return (substring_match(s1, (s2 + 1), (s2 + 1)));
+else
+return (0);
 }
 
