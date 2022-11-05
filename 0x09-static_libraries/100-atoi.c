@@ -46,4 +46,3 @@ sign *= -1;
 }
 return (n *sign);
 }
-

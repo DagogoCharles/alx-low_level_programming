@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _strncat - concatenates two strings
+ * _strncat - concat strings
  * @dest: destination
  * @src: source
- * @n: amount of byte used from src
- * Return: the pointer to dest
+ * @n: byte used from src
+ * Return: return pointer to dest
  */
 char *_strncat(char *dest, char *src, int n)
 {
@@ -24,4 +24,3 @@ count2++;
 }
 return (dest);
 }
-

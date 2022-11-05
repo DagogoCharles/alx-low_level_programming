@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * _strcmp - compare two strings
- * @s1: first string
- * @s2: second string
+ * _strcmp - compare strings
+ * @s1: 1st string
+ * @s2: 2nd string
  * Return: 0 if s1 and s2 are equal
  * another number if not
  */
@@ -18,4 +18,3 @@ i++;
 }
 return (op);
 }
-

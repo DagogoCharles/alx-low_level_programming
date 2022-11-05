@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * _strncpy - copies a string
+ * _strncpy - copy string
  * @dest: destination
  * @src: source
- * @n: amount of bytes from source
- * Return: the pointer to dest
+ * @n: bytes from source
+ * Return: take pointer to dest
  */
 char *_strncpy(char *dest, char *src, int n)
 {
@@ -15,4 +15,3 @@ for ( ; i < n; i++)
 dest[i] = '\0';
 return (dest);
 }
-
